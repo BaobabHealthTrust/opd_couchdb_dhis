@@ -1,0 +1,79 @@
+<div class=bs-example data-example-id=panel-with-heading > 
+                     <div class="panel panel-default" style="border-radius: 0px; border:0px" > 
+                        <div class=panel-heading>
+
+                            <h3>
+                                <!-- check in o-->
+                                            
+                                
+
+                                IDSR MONTHLY REPORTS FOR <strong style="color: brown"> <%=  @district %> </strong>DISTRICT
+                            </h3>
+
+                        </div> 
+                        <div class=panel-body style="padding: 1%"> 
+                            <div class='col-lg-7'>
+
+
+                                <form action="/report/generate_facility_report" method="POST">
+
+                                  <div class="form-group red">
+                                    <label for="exampleSelect1">Health Facility Name</label>
+                                    <select class="form-control" id="exampleSelect1" required="true" name = @facility_details[site_name]>
+                                    
+                                   <% @facilities.each do |site| 
+                                    %>
+                                        <option><%= site.downcase %></option>
+                                        district
+                                    <%end%>
+                                  </select>
+                              </div>
+
+
+
+
+                              <div class="form-group red" style="width: 20%" >
+                                <label for="exampleSelect1"> Report Month</label>
+                                <select class="form-control" id="month" required="true" name = @facility_details[month]>
+                                  <option></option>
+                                  <% i = 1 %>
+                                  <% while(i<=12) %>
+                                  <% if i<10 %>
+                                  <option> <%= "0" + "#{i}" %></option>
+                                  <%else%>
+                                  <option> <%= i %></option>
+                                  <% end %>
+                                  <% i = i + 1 %>
+                                  <% end %>
+                              </select>
+                          </div>
+
+
+                          <div class="form-group red" style="width: 20%">
+                            <label for="exampleInputPassword1">Report Year</label>
+                            <input type="number" name = @facility_details[year] class="form-control" id="year" placeholder="1990 - above" min="1990" max="<%= Date.today.year %>" required="true">
+                        </div>
+
+
+
+
+                        <button type="submit" class="btn btn-success red">Generate</button>
+                    </form>
+                </div>
+
+                <div class='col-md-5'>
+
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+</div> 
+
