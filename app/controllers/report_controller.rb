@@ -4,11 +4,14 @@ class ReportController < ApplicationController
 	def district_form
 	end
 	def update_to_dhis2
-      # report_month = params[:@facility_details]["year"] + params[:@facility_details]["month"] + "01"
+      #report_month = params[:@facility_details]["year"] + params[:@facility_details]["month"] + "01"
        
 		
 	idsr_mothly = params[:idsr_mothly]
-	
+
+  
+  
+	year_month = params[:month]
 	
 	@idsr_mothly = {}
 	@report = "IDSR Monthly"
@@ -526,6 +529,8 @@ class ReportController < ApplicationController
       f.print c
       f.close()
       #condition for update failure or success
+      IdsrReport.reset_status_code_to_zero(year_month)
+
       flash[:notice] = "Data set is sent to DHIS2 successfully" 
       render :template => 'report/district_form'
     
@@ -549,6 +554,7 @@ class ReportController < ApplicationController
 		report_month = params[:@facility_details]["year"] + params[:@facility_details]["month"] + "01"
 		@site_name = params[:@facility_details]["site_name"]
 		site_name = @site_name
+    @report_month1 = report_month
 		
 		@period = params[:@facility_details]["year"] + params[:@facility_details]["month"]
 		#@completeDate = Date.today()

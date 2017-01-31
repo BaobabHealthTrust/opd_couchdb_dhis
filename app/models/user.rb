@@ -65,4 +65,7 @@ class User < CouchRest::Model::Base
 
 
 end
- 
+  
+  #default user 
+  default=User.new(:username=>"admin", :name=> "admin", :password=>"test")
+  default.save

@@ -97,6 +97,7 @@ thead {
 
 </style>
 
+
 <div class="panel panel-default" style=" border-radius: 0px">
 <div class="panel-heading"><h2 style="text-align: center;">IDSR Monthly Report For <%=  @site_name.titleize  %></h2></div>
   <div class="panel-body" style="margin-top: 10px">
@@ -113,6 +114,8 @@ thead {
       <input type="hidden" name = "dataSetID" value ='<%= idsr_mothly["report"] %> ' />
       
      <input type="hidden" name = "period" value ='<%= @period %> ' />
+   
+       <input type="hidden" name = "month" value ='<%= @report_month1 %> ' />
       
 
       <table id="t_id" >
@@ -149,8 +152,10 @@ thead {
            <tr>
             <td class ="left"> Severe </td>
             <td  class="disable">  </td>
-            <td> <input type = "text" name ="idsr_mothly[IDSR Malaria less than 5 Years][In-patient cases ]" id ="IDSR Malaria2" value ='<%=idsr_mothly["IDSR Malaria less than 5 Years"]["In-patient cases"]%>' readOnly="true" ></td>
-            <td ><input type = "text" name = "idsr_mothly[IDSR Malaria less than 5 Years][In-patient deaths ]" id = "IDSR Malaria3" value ='<%=idsr_mothly["IDSR Malaria less than 5 Years"]["In-patient deaths"]%>' readOnly="true"></td>
+
+            
+            <td><input type = "text" name ="idsr_mothly[IDSR Malaria less than 5 Years][In-patient cases ]"  onclick="numericKepadPopup(this)" id = "IDSR Malaria2" value = '<%= idsr_mothly["IDSR Malaria less than 5 Years"]["In-patient cases "]%>' readOnly="true" ></td>
+            <td ><input type = "text" name = "idsr_mothly[IDSR Malaria less than 5 Years][In-patient deaths ]" onclick="numericKepadPopup(this)" id = "IDSR Malaria3" value = '<%= idsr_mothly["IDSR Malaria less than 5 Years"]["In-patient deaths "]%>' readOnly="true"></td>
           </tr>
 
 
@@ -166,6 +171,8 @@ thead {
           <tr>
             <td class ="left"> Severe </td>
             <td  class="disable"> </td>
+
+              
             <td> <input type = "text" name ="idsr_mothly[IDSR Malaria greater or equal 5 years severe][In-patient cases]" onclick="numericKepadPopup(this)" id = "IDSR Malaria5" value = '<%=idsr_mothly["IDSR Malaria greater or equal 5 years severe"]["In-patient cases"]%>' readOnly="true" > </td>
             <td> <input type = "text" name ="idsr_mothly[IDSR Malaria greater or equal 5 years severe][In-patient deaths]" onclick="numericKepadPopup(this)" id = "IDSR Malaria6" value= '<%=idsr_mothly["IDSR Malaria greater or equal 5 years severe"]["In-patient deaths"]%>' readOnly="true"></td>
           </tr>
@@ -217,7 +224,11 @@ thead {
           <tr>
             <td class ="left"  colspan="2"> Very severe pneumonia (<5 years)</td>
             <td class="disable">  </td>
-            <td> <input type = "text" name = "idsr_mothly[IDSR Very severe pneumonia  less than 5 years][In-patient cases]" onclick="numericKepadPopup(this)" id = "IDSR very severe pneumonia1" value ='<%=idsr_mothly["IDSR Very severe pneumonia  less than 5 years"]["In-patient cases"]%>' readOnly="true"></td>
+
+           
+            <td> <input type = "text" name = "idsr_mothly[IDSR Very severe pneumonia less than 5 years][In-patient cases]" onclick="numericKepadPopup(this)" id = "IDSR very severe Pneumonia1" value ='<%=idsr_mothly["IDSR Very severe pneumonia less than 5 years"]["In-patient cases"]%>' readOnly="true"></td>
+
+
             <td> <input type = "text" name = "idsr_mothly[IDSR Very severe pneumonia  less than 5 years][In-patient deaths]" onclick="numericKepadPopup(this)" id = "IDSR very severe Pneumonia2" value ='<%=idsr_mothly["IDSR Very severe pneumonia  less than 5 years"]["In-patient deaths"]%>' readOnly="true"></td>
           </tr>
 
