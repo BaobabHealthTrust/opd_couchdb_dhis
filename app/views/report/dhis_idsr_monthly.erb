@@ -3,8 +3,6 @@
 
 <%  idsr_mothly = @report_conditions %>
 
-
-
 <style>
   #t_id {
 
@@ -105,7 +103,7 @@ thead {
 
 
 
-    <form action="/report/update_to_dhis2/" method="post">
+    <form action="/report/update_to_dhis2/" method="post" style="margin-bottom: 45px">
       <input type="hidden" name = 'idsr_mothly["report_month"]' value ='<%= idsr_mothly["report_month"] %>' />
       
       <input type="hidden" name = "orgUnit_ID" value ='<%= idsr_mothly["site_code"] %>' />
@@ -365,7 +363,7 @@ thead {
 
   
 </div>
-<nav class="navbar navbar-inverse navbar-fixed-bottom" role="navigation" style="background: #F0F0F0; min-height: 70px; border:0px;padding: 5px; margin-bottom: 5px " >
+<nav class="navbar navbar-inverse navbar-fixed-bottom" role="navigation" style="background: #F0F0F0; min-height: 70px; border:0px;padding: 5px;  margin-top: 15px; margin-bottom: 5px " >
     <div class="container" >
 
         <div class="col-lg-6" >
