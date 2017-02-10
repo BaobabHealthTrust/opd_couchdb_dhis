@@ -5,41 +5,41 @@
 
 <style>
 	#t_id {
-		 
+
 		 margin: 0px;
          width:100%;
 		 padding-bottom:30px;
 		 padding-top:20px;
 		 left:75px;
 	}
-	
+
      td , th{
         border-style:solid;
         border-width:thin;
         padding:5px;
         text-align:center;
       }
-      
+
       thead {
       	font-weight:bold;
       }
-      
+
       .left {
 		text-align:left;
       }
-      
+
       .center {
         text-align:center;
       }
-      
+
       #content {
       	background-color:white;
       }
-      
+
       #mateme {
       	background-color:black;
       }
-      
+
       #title {
       	/*margin:0px auto;*/
       	margin:0px;
@@ -49,15 +49,15 @@
       	/*width:1400px;*/
       	width:100%;
       }
-      
+
       .disable {
       	background-color:grey;
       }
-      
+
       .bold {
       	font-weight:bold;
       }
-      
+
 	/*  .logo {
 	  	float :left;
 	  	margin-left: 0px;
@@ -65,12 +65,12 @@
 		height: 4em;
 		z-index:5000;
 	  }*/
-     
+
      .logo {
         float:left
         position:relative;
         height: 4.5em;
-        
+
       }
 
       input{
@@ -78,7 +78,7 @@
         border :0px;
         text-align: center;
       }
-	  
+
 	 #base {
 		background-color: #333333;
 		bottom: 0;
@@ -87,11 +87,11 @@
 		overflow: hidden;
 		margin: 0px auto;
 		width: 100%;
-      }   
+      }
 
 
-	  
-      
+
+
       .lf {
       	float:right;
       }
@@ -101,29 +101,21 @@
  <div class="panel panel-default" style=" border-radius: 0px">
 <div class="panel-heading"><h2 style="text-align: center;">HMIS-15 MONTHLY Report For <%=  @site_name.titleize  %></h2></div>
   <div class="panel-body" style="margin-top: 10px">
-
-
-
-
-       
- 
       <form action="/report/update_to_dhis2/" method="post" style="margin-bottom: 45px">
       <input type="hidden" name = 'hmis_report["report_month"]' value ='<%= hmis_report["report_month"] %>' />
-      
+
       <input type="hidden" name = "orgUnit_ID" value ='<%= hmis_report["site_code"] %>' />
-       
+
 
       <input type="hidden" name = "dataSetID" value ='<%= hmis_report["report"] %> ' />
-      
+
      <input type="hidden" name = "period" value ='<%= @period %> ' />
-   
+
        <input type="hidden" name = "month" value ='<%= @report_month1 %> ' />
+  	<input type="hidden" name = "report_type" value ='<%=  hmis_report["report_type"] %> ' />
+      <input type="hidden" name = "id" value ='<%= @id %> ' />
 
-
-
-
-
-		<table id="t_id" >
+	<table id="t_id" >
 	<tbody>
 		<tr>
 			<td colspan="3" style="text-align: center;"><b>Martenal Services</b></td>
@@ -133,7 +125,7 @@
 		<td>Number of pregnant women starting antenatal care during their first trimester</td>
 
             <td ><input type = "text" name ="hmis_report[HMIS pregnant women starting antenatal care first trimester]" id ="HMIS pregnant women starting antenatal" value = '<%= hmis_report["HMIS pregnant women starting antenatal care first trimester"] %>' readOnly="true"/></td>
-       
+
 		</tr>
 
 
@@ -141,7 +133,7 @@
 		<tr>
 			<td>40</td>
 			<td>Total number of new antenatal attendees</td>
-               
+
                 <td><input type = "text" name ="hmis_report[HMIS total number of new antenatal attendees]" onclick="numericKepadPopup(this)" id ="HMIS Total new antenatal attendees" value ='<%= hmis_report["HMIS total number of new antenatal attendees"] %>'/></td>
 
 		</tr>
@@ -164,7 +156,7 @@
 			<td>Number of women obstetric complications treated at obstretric care facility</td>
 
              <td> <input type = "text" name ="hmis_report[HMIS women obstetric complications treated]" onclick="numericKepadPopup(this)" id ="HMIS women obstetric complications treated" value = '<%= hmis_report["HMIS women obstetric complications treated"] %>'></td>
-				
+
 		</tr>
 		<tr>
 			<td>43</td>
@@ -174,12 +166,12 @@
 
 			<td> <input type = "text" name ="hmis_report[HMIS caesarean sections]" onclick="numericKepadPopup(this)" id ="HMIS caesarean sections" value = '<%= hmis_report["HMIS caesarean sections"] %>'></td>
 
-			
+
 		</tr>
 		<tr>
 			<td>44</td>
 			<td>Total number of live births</td>
-            
+
             <td><input type = "text" name ="hmis_report[HMIS live births]" onclick="numericKepadPopup(this)" id ="HMIS live births" value = '<%= hmis_report["HMIS live births"] %>'></td>
 
 		</tr>
@@ -195,14 +187,14 @@
 			<td>Number of abortion complications treated</td>
 
             <td><input type = "text" name ="hmis_report[HMIS abortion complications treated]" onclick="numericKepadPopup(this)" id ="HMIS abortion complications treated" value = '<%= hmis_report["HMIS abortion complications treated"] %>'></td>
-			
+
 		</tr>
 		<tr>
 			<td>46</td>
 			<td>Number of eclampsia cases treated</td>
 
 			<td><input type = "text" name ="hmis_report[HMIS eclampsia cases treated]" onclick="numericKepadPopup(this)" id ="HMIS eclampsia cases treated" value = '<%= hmis_report["HMIS eclampsia cases treated"] %>'></td>
-					
+
 		</tr>
 		<tr>
 			<td>47</td>
@@ -216,14 +208,14 @@
 			<td>Number of sepsis cases treated</td>
 
              <td><input type = "text" name ="hmis_report[HMIS sepsis cases treated]" onclick="numericKepadPopup(this)" id ="HMIS sepsis cases treated" value = '<%= hmis_report["HMIS sepsis cases treated"] %>'></td>
-			
+
 		</tr>
 		<tr>
 			<td>49</td>
 			<td>Number of pregnant women treated for severe anaemia</td>
 
            <td><input type = "text" name ="hmis_report[HMIS pregnant women treated for severe anaemia]" onclick="numericKepadPopup(this)" id ="HMIS pregnant women treated for severe anaemia" value = '<%= hmis_report["HMIS pregnant women treated for severe anaemia"] %>'></td>
-			
+
 		</tr>
 		<tr>
 			<td>51</td>
@@ -236,7 +228,7 @@
 			<td>Number of postpartum care within 2 weeks of delivery</td>
 
             <td><input type = "text" name ="hmis_report[HMIS  postpartum care within 2 weeks of delivery]" onclick="numericKepadPopup(this)" id ="HMIS  postpartum care within 2 weeks of delivery" value = '<%= hmis_report["HMIS  postpartum care within 2 weeks of delivery"] %>'></td>
-			
+
 		</tr>
 		<tr>
 			<td colspan="3" style="text-align: center;"><b>Family Planning</b></td>
@@ -246,14 +238,14 @@
 			<td>Number of persons receiving 3 months supply of condoms</td>
 
             <td><input type = "text" name ="hmis_report[HMIS persons receiving 3 months supply of condoms]" onclick="numericKepadPopup(this)" id ="HMIS persons receiving 3 months supply of condoms" value = '<%= hmis_report["HMIS persons receiving 3 months supply of condoms"] %>'></td>
-						
+
 		</tr>
 		<tr>
 			<td style="text-align: center;">b</td>
 			<td>Number of persons receiving 3 months of oral pills</td>
 
             <td><input type = "text" name ="hmis_report[HMIS persons receiving 3 months oral pills]" onclick="numericKepadPopup(this)" id ="HMIS persons receiving 3 months oral pills" value = '<%= hmis_report["HMIS persons receiving 3 months oral pills"] %>'></td>
-				
+
 		</tr>
 		<tr>
 			<td style="text-align: center;">c</td>
@@ -268,14 +260,14 @@
 
             <td><input type = "text" name ="hmis_report[HMIS persons receiving norplant]" onclick="numericKepadPopup(this)" id ="HMIS persons receiving norplant" value = '<%= hmis_report["HMIS persons receiving norplant"] %>'></td>
 
-			
+
 		</tr>
 		<tr>
 			<td style="text-align: center;">e</td>
 			<td>Number of persons receiving IUCD</td>
 
             <td><input type = "text" name ="hmis_report[HMIS persons receiving iucd]" onclick="numericKepadPopup(this)" id ="HMIS persons receiving iucd" value = '<%= hmis_report["HMIS persons receiving iucd"] %>'></td>
-		
+
 		<tr>
 			<td style="text-align: center;">f</td>
 			<td>Number of persons receiving sterilisation method of FP</td>
@@ -289,16 +281,16 @@
 		<tr>
 			<td style="text-align: center;">55</td>
 			<td>Number of fully immunised under 1 children</td>
-        
+
             <td><input type = "text" name ="hmis_report[HMIS under 1 fully immunised children]" onclick="numericKepadPopup(this)" id ="HMIS under 1 fully immunised children" value = '<%= hmis_report["HMIS under 1 fully immunised children"] %>'></td>
-			
+
 		</tr>
 		<tr>
 			<td style="text-align: center;">56</td>
 			<td>Number of under 1 children given BCG</td>
                 <td><input type = "text" name ="hmis_report[HMIS under 1 bcg children]" onclick="numericKepadPopup(this)" id ="HMIS under 1 bcg children" value = '<%= hmis_report["HMIS under 1 bcg children"] %>'></td>
 
-			
+
 		</tr>
 		<tr>
 			<td style="text-align: center;">56</td>
@@ -306,7 +298,7 @@
 
             <td><input type = "text" name ="hmis_report[HMIS under 1 children given pentavalent]" onclick="numericKepadPopup(this)" id ="HMIS under 1 children given pentavalent" value = '<%= hmis_report["HMIS under 1 children given pentavalent"] %>'></td>
 
-				
+
 		</tr>
 		<tr>
 			<td style="text-align: center;">56</td>
@@ -316,7 +308,7 @@
 			<td><input type = "text" name ="hmis_report[HMIS under 1 children given polio]" onclick="numericKepadPopup(this)" id ="HMIS under 1 children given polio" value = '<%= hmis_report["HMIS under 1 children given polio"] %>'></td>
 
 
-			
+
 		<tr>
 			<td style="text-align: center;">&nbsp;56</td>
 			<td>Number of under 1 children given measles 1st doses at 9M</td>
@@ -327,9 +319,9 @@
 		<tr>
 			<td style="text-align: center;">57</td>
 			<td>Number of Vitamin A doses given to 6 - 59 M population</td>
-            
+
              <td><input type = "text" name ="hmis_report[HMIS vitmin A doses given to 6-59m children]" onclick="numericKepadPopup(this)" id ="HMIS vitmin A doses given to 6-59m children" value = '<%= hmis_report["HMIS vitmin A doses given to 6-59m children"] %>'></td>
-			
+
 		</tr>
 		<tr>
 			<td style="text-align: center;">62</td>
@@ -337,7 +329,7 @@
 
             <td><input type = "text" name ="hmis_report[HMIS under weight children in under five clinic]" onclick="numericKepadPopup(this)" id ="HMIS under weight children in under five clinic" value = '<%= hmis_report["HMIS under weight children in under five clinic"] %>'></td>
 
-			
+
 		</tr>
 		<tr>
 			<td colspan="3" style="text-align: center;"><b>Attendance</b></td>
@@ -349,7 +341,7 @@
 
              <td><input type = "text" name ="hmis_report[HMIS 15-49 years receiving testing and serostatus]" onclick="numericKepadPopup(this)" id ="HMIS 15-49 years receiving testing and serostatus" value = '<%= hmis_report["HMIS 15-49 years receiving testing and serostatus"] %>'></td>
 
-			
+
 		</tr>
 		<tr>
 			<td style="text-align: center;">31</td>
@@ -363,16 +355,16 @@
 			<td>Number of HIV positive persons receiving ARV treatment</td>
 
 			<td><input type = "text" name ="hmis_report[HMIS]" onclick="numericKepadPopup(this)" id ="HMIS " value = '<%= hmis_report["HMIS "] %>'></td>
-            
+
 		</tr>
 		<tr>
 			<td style="text-align: center;">34</td>
 			<td>Number of pregnant women receiving VCT and serostatus results</td>
-             
-             
+
+
 			<td><input type = "text" name ="hmis_report[HMIS hiv positive persons receiving ARV treatment]" onclick="numericKepadPopup(this)" id ="HMIS hiv positive persons receiving ARV treatment" value = '<%= hmis_report["HMIS hiv positive persons receiving ARV treatment"] %>'></td>
 
-			
+
 		</tr>
 		<tr>
 			<td style="text-align: center;">35</td>
@@ -384,7 +376,7 @@
 		<tr>
 			<td style="text-align: center;">36</td>
 			<td>Number of HIV positive women treated for PMTCT</td>
-        
+
              <td><input type = "text" name ="hmis_report[HMIS HIV positive women treated for PMTCT]" onclick="numericKepadPopup(this)" id ="HMIS HIV positive women treated for PMTCT" value = '<%= hmis_report["HMIS HIV positive women treated for PMTCT"] %>'></td>
 
 		</tr>
@@ -400,7 +392,7 @@
 			<td>Number of OPD attendance</td>
 
              <td><input type = "text" name ="hmis_report[HMIS OPD attendance]" onclick="numericKepadPopup(this)" id ="HMIS OPD attendance" value = '<%= hmis_report["HMIS OPD attendance"] %>'></td>
-		
+
 		</tr>
 		<tr>
 			<td colspan="3" style="text-align: center;"><b>Tuberculosis</b></td>
@@ -418,14 +410,14 @@
 
 			 <td><input type = "text" name ="hmis_report[HMIS smear negative and extra-pulmonary cases completed treatment]" onclick="numericKepadPopup(this)" id ="HMIS smear negative and extra-pulmonary cases completed treatment" value = '<%= hmis_report["HMIS smear negative and extra-pulmonary cases completed treatment"] %>'></td>
 
-			
+
 		</tr>
 		<tr>
 			<td style="text-align: center;">67</td>
 			<td>Num of new smear sputum positive cases proved smear -ve at the end of treatment</td>
 
 			<td><input type = "text" name ="hmis_report[HMIS new smear sputum positive cases]" onclick="numericKepadPopup(this)" id ="HMIS new smear sputum positive cases" value = '<%= hmis_report["HMIS new smear sputum positive cases"] %>'></td>
-		
+
 		</tr>
 		<tr>
 			<td colspan="3" style="text-align: center;"><b>Supplies</b></td>
@@ -435,7 +427,7 @@
 			<td>Was there any stock outs of SP for more than a week at a time?</td>
 
             <td><input type = "text" name ="hmis_report[HMIS stock outs of SP for more than a week at a time]" onclick="numericKepadPopup(this)" id ="HMIS stock outs of SP for more than a week at a time" value = '<%= hmis_report["HMIS stock outs of SP for more than a week at a time"] %>'></td>
-		
+
 		</tr>
 		<tr>
 			<td style="text-align: center;">23</td>
@@ -450,7 +442,7 @@
 
 			<td><input type = "text" name ="hmis_report[HMIS stock outs of contrimaxazole for more than a week at a time]" onclick="numericKepadPopup(this)" id ="HMIS stock outs of contrimaxazole for more than a week at a time" value = '<%= hmis_report["HMIS stock outs of contrimaxazole for more than a week at a time"] %>'></td>
 
-			
+
 		</tr>
 		<tr>
 			<td style="text-align: center;">23</td>
@@ -464,7 +456,7 @@
 			<td>Number of functioning ambulances</td>
 
             <td><input type = "text" name ="hmis_report[HMIS functioning ambulances]" onclick="numericKepadPopup(this)" id ="HMIS functioning ambulances" value = '<%= hmis_report["HMIS functioning ambulances"] %>'></td>
-            
+
 		</tr>
 		<tr>
 			<td style="text-align: center;">76</td>
@@ -481,7 +473,7 @@
 			<td>Number of households with access to safe drinking water</td>
 
             <td><input type = "text" name ="hmis_report[HMIS households with access to safe drinking water]" onclick="numericKepadPopup(this)" id ="HMIS households with access to safe drinking water" value = '<%= hmis_report["HMIS households with access to safe drinking water"] %>'></td>
-			
+
 		</tr>
 		<tr>
 			<td style="text-align: center;">26</td>
@@ -496,7 +488,7 @@
 
             <td><input type = "text" name ="hmis_report[HMIS HBC patents follow-up and provided treatment]" onclick="numericKepadPopup(this)" id ="HMIS HBC patents follow-up and provided treatment" value = '<%= hmis_report["HMIS HBC patents follow-up and provided treatment"] %>'></td>
 
-			
+
 		</tr>
 		<tr>
 			<td colspan="3" style="text-align: center;"><b>Physical Facilities</b></td>
@@ -521,7 +513,7 @@
 
 			<td><input type = "text" name ="hmis_report[HMIS Do you have functioning Electricity]" onclick="numericKepadPopup(this)" id ="HMIS Do you have functioning Electricity" value = '<%= hmis_report["HMIS Do you have functioning Electricity"] %>'></td>
 
-			
+
 		</tr>
 		<tr>
 			<td style="text-align: center;">17</td>
@@ -529,7 +521,7 @@
 
             <td><input type = "text" name ="hmis_report[HMIS Do you have functioning water supply,Electricity and Communication systems]" onclick="numericKepadPopup(this)" id ="HMIS Do you have functioning water supply,Electricity and Communication systems" value = '<%= hmis_report["HMIS Do you have functioning water supply,Electricity and Communication systems"] %>'></td>
 
-			
+
 		</tr>
 		<tr>
 			<td colspan="3" style="text-align: center;"><b>Management and Supervision</b></td>
@@ -539,7 +531,7 @@
 			<td>Is the health center committee functional?</td>
 
 			<td><input type = "text" name ="hmis_report[HMIS functional health center committee]" onclick="numericKepadPopup(this)" id ="HMIS functional health center committee" value = '<%= hmis_report["HMIS functional health center committee"] %>'></td>
-			
+
 		</tr>
 		<tr>
 			<td style="text-align: center;">15</td>
@@ -547,7 +539,7 @@
 
 			<td><input type = "text" name ="hmis_report[HMIS Were you supervised by DHMT]" onclick="numericKepadPopup(this)" id ="HMIS Were you supervised by DHMT" value = '<%= hmis_report["HMIS Were you supervised by DHMT "] %>'></td>
 
-			
+
 		</tr>
 		<tr>
 			<td colspan="3" style="text-align: center;"><b>New Cases (OPD plus inpatient)</b></td>
@@ -574,12 +566,12 @@
 
             <td><input type="text" name= "hmis_report[HMIS hiv confirmed positive]" id = "HMIS hiv confirmed positive" value = '<%= hmis_report["HMIS hiv confirmed positive"] %>'
                readOnly="true" /></td>
-			
+
 		</tr>
 		<tr>
 			<td style="text-align: center;">37</td>
 			<td>Opportunistic infection - new cases</td>
-    
+
             <td><input type="text" name= "hmis_report[HMIS opportunistic infection]" id = "HMIS opportunistic infection" value = '<%= hmis_report["HMIS opportunistic infection"] %>'
                readOnly="true" /></td>
 
@@ -587,10 +579,10 @@
 		<tr>
 			<td style="text-align: center;">58</td>
 			<td>Acute respiratory infections - new cases (U5)</td>
-    
+
              <td><input type="text" name= "hmis_report[HMIS acute respiratory infection under 5]" id = "HMIS acute respiratory infection under 5" value = '<%= hmis_report["HMIS acute respiratory infection under 5"] %>'
                readOnly="true" /></td>
-			
+
 		</tr>
 		<tr>
 			<td style="text-align: center;">60</td>
@@ -611,7 +603,7 @@
 		<tr>
 			<td style="text-align: center;">69</td>
 			<td>Malaria - new cases (under 5)</td>
-            
+
             <td><input type="text" name= "hmis_report[HMIS malaria less than 5]" id = "HMIS malaria less than 5" value = '<%= hmis_report["HMIS malaria less than 5"] %>'
                readOnly="true" /></td>
 
@@ -622,7 +614,7 @@
 
             <td><input type="text" name= "hmis_report[HMIS malaria more than 5]" id = "HMIS malaria more than 5" value = '<%= hmis_report["HMIS malaria more than 5"] %>'
                readOnly="true" /></td>
-			
+
 		</tr>
 		<tr>
 			<td style="text-align: center;">78</td>
@@ -638,7 +630,7 @@
 
              <td><input type="text" name= "hmis_report[HMIS cholera]" id = "HMIS cholera" value = '<%= hmis_report["HMIS cholera"] %>'
                readOnly="true" /></td>
-			
+
 		</tr>
 		<tr>
 			<td style="text-align: center;">81</td>
@@ -646,7 +638,7 @@
 
 			<td><input type="text" name= "hmis_report[HMIS measles]" id = "HMIS measles" value = '<%= hmis_report["HMIS measles"] %>'
                readOnly="true" /></td>
-			
+
 		</tr>
 		<tr>
 			<td style="text-align: center;">82</td>
@@ -654,22 +646,22 @@
 
               <td><input type="text" name= "hmis_report[HMIS acute flaccid paralysis]" id = "HMIS acute flaccid paralysis" value = '<%= hmis_report["HMIS acute flaccid paralysis"] %>'
                readOnly="true" /></td>
-			
+
 		</tr>
 		<tr>
 			<td style="text-align: center;">83</td>
 			<td>Ebola - confirmed new cases</td>
-     
+
             <td><input type="text" name= "hmis_report[HMIS ebola]" id = "HMIS ebola" value = '<%= hmis_report["HMIS ebola"] %>'
                readOnly="true" /></td>
-			
+
 		</tr>
 		<tr>
 			<td style="text-align: center;">84</td>
 			<td>Meningococal meningitis - confimed new cases</td>
             <td><input type="text" name= "hmis_report[HMIS meningitis]" id = "HMIS meningitis" value = '<%= hmis_report["HMIS meningitis"] %>'
                readOnly="true" /></td>
-			
+
 		</tr>
 		<tr>
 			<td style="text-align: center;">85</td>
@@ -677,7 +669,7 @@
 
             <td><input type="text" name= "hmis_report[HMIS plague]" id = "HMIS plague" value = '<%= hmis_report["HMIS plague"] %>'
                readOnly="true" /></td>
-			
+
 		</tr>
 		<tr>
 			<td style="text-align: center;">86</td>
@@ -685,82 +677,82 @@
 
             <td><input type="text" name= "hmis_report[HMIS rabies]" id = "HMIS rabies" value = '<%= hmis_report["HMIS rabies"] %>'
                readOnly="true" /></td>
-		
+
 		</tr>
 		<tr>
 			<td style="text-align: center;">87</td>
 			<td>Yellow fever - confirmed new cases</td>
 
              <td><input type="text" name= "hmis_report[HMIS yellow fever]" id = "HMIS yellow fever" value = '<%= hmis_report["HMIS yellow fever"] %>'
-               readOnly="true" /></td> 
-			
+               readOnly="true" /></td>
+
 		</tr>
 		<tr>
 			<td style="text-align: center;">88</td>
 			<td>Dysentery - new cases</td>
 
             <td><input type="text" name= "hmis_report[HMIS dysentery]" id = "HMIS dysentery" value = '<%= hmis_report["HMIS dysentery"] %>'
-               readOnly="true" /></td> 
+               readOnly="true" /></td>
 		</tr>
 		<tr>
 			<td style="text-align: center;">90</td>
 			<td>Eye infections - new cases</td>
 
             <td><input type="text" name= "hmis_report[HMIS eye infection]" id = "HMIS eye infection" value = '<%= hmis_report["HMIS eye infection"] %>'
-               readOnly="true" /></td> 
-			
+               readOnly="true" /></td>
+
 		</tr>
 		<tr>
 			<td style="text-align: center;">91</td>
 			<td>Ear infections - new cases</td>
 
             <td><input type="text" name= "hmis_report[HMIS ear_infection]" id = "HMIS ear_infection" value = '<%= hmis_report["HMIS ear_infection"] %>'
-               readOnly="true" /></td> 
-		
+               readOnly="true" /></td>
+
 		</tr>
 		<tr>
 			<td style="text-align: center;">92</td>
 			<td>Skin infections - new cases</td>
 
             <td><input type="text" name= "hmis_report[HMIS skin infections]" id = "HMIS skin infections" value = '<%= hmis_report["HMIS skin infections"] %>'
-               readOnly="true" /></td> 
-	
+               readOnly="true" /></td>
+
 		</tr>
 		<tr>
 			<td style="text-align: center;">93</td>
 			<td>Oral conditions</td>
-           
+
            <td><input type="text" name= "hmis_report[HMIS oral_conditions]" id = "HMIS oral_conditions" value = '<%= hmis_report["HMIS oral_conditions"] %>'
-               readOnly="true" /></td> 
+               readOnly="true" /></td>
 		</tr>
 		<tr>
 			<td style="text-align: center;">94</td>
 			<td>Schistosomiasis - new cases</td>
 
 			<td><input type="text" name= "hmis_report[HMIS schistosomiasis]" id = "HMIS schistosomiasis" value = '<%= hmis_report["HMIS schistosomiasis"] %>'
-               readOnly="true" /></td> 
+               readOnly="true" /></td>
 		</tr>
 		<tr>
 			<td style="text-align: center;">95</td>
 			<td>Leprosy - new cases</td>
 
 			<td><input type="text" name= "hmis_report[HMIS leprosy]" id = "HMIS leprosy" value = '<%= hmis_report["HMIS leprosy"] %>'
-               readOnly="true" /></td> 
+               readOnly="true" /></td>
 		</tr>
 		<tr>
 			<td style="text-align: center;">96</td>
 			<td>Common injuries and wounds (except RTA)</td>
 
             <td><input type="text" name= "hmis_report[HMIS injuries and wounds]" id = "HMIS injuries and wounds" value = '<%= hmis_report["HMIS injuries and wounds"] %>'
-               readOnly="true" /></td> 
-	
+               readOnly="true" /></td>
+
 		</tr>
 		<tr>
 			<td style="text-align: center;">98</td>
 			<td>Number of road traffic accidents</td>
 
             <td><input type="text" name= "hmis_report[HMIS road traffic accidents]" id = "HMIS road traffic accidents" value = '<%= hmis_report["HMIS road traffic accidents"] %>'
-               readOnly="true" /></td> 
+               readOnly="true" /></td>
 
 		</tr>
 		<tr>
@@ -769,8 +761,8 @@
 		<tr>
 			<td style="text-align: center;">20a</td>
 			<td>Bed capacity</td>
-                        
-			
+
+
          <td><input type="text" name="hmis_report[HMIS bed capacity]" onclick="numericKepadPopup(this)" id ="HMIS bed capacity" value ='<%= hmis_report["HMIS bed capacity"] %>'</td>
 		</tr>
 		<tr>
@@ -831,7 +823,7 @@
 			<td>Malaria - inpatient deaths ( 5 &amp; over)</td>
 			<td><input type="text" name="hmis_report[HMIS malaria inpatient deaths over 5]"onclick="numericKepadPopup(this)" id ="HMIS malaria inpatients deaths over 5" value ='<%= hmis_report["HMIS malaria inpatient deaths over 5 "] %>'</td>
 		</tr>
-		<tr> 
+		<tr>
 			<td style="text-align: center;">80</td>
 			<td>Cholera - inpatients deaths</td>
 			<td><input type="text" name="hmis_report[HMIS  cholera inpatient deaths]"onclick="numericKepadPopup(this)" id ="HMIS cholera inpatients deaths" value ='<%= hmis_report["HMIS  cholera inpatient deaths"] %>'</td>
@@ -861,16 +853,16 @@
                 <button type = "submit" class = "btn btn-success" style=" font-family: tohama" >Update</button>
 
         </div>
- 
-        
+
+
     </div>
 </nav>
 
 <script type="text/javascript">
-    
+
     function cancel(){
         window.location = '/sessions/home';
 
     }
-       
+
 </script>

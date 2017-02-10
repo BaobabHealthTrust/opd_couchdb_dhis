@@ -1,19 +1,19 @@
 Rails.application.routes.draw do
-  
 
- 
+
+
 
   get 'report/idsr_report'
 
   root 'sessions#login'
 
   match ':controller(/:action(/:id))', :via => [:get, :post]
-   
+
 
   get 'users/index'
   get 'users/show'
 
-  
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,7 +1,14 @@
 
                        <div class="panel panel-default" style=" border-radius: 0px">
                           <!--<div class="panel-heading"><h2>IDSR MONTHLY REPORTS </h2></div>-->
-                          <div class="panel-heading"><h2>MONTHLY REPORTS </h2>
+                          <%
+
+                          if params[:id].blank?
+                            params[:id] = @report_type
+                          end
+
+                          %>
+                          <div class="panel-heading"><h2> <%= params[:id].upcase %> REPORTS </h2>
                           <div class="panel-body" style="margin-top: 10px">
 
                 <div class='col-lg-12'>
@@ -11,7 +18,8 @@
                       <div class="panel-heading" style="border-radius: 0px"><h3> Districts</h3></div>
                       <div class="panel-body" style="padding: 5px">
                           <form  method = "POST" action="/report/site_form">
-                            
+                          
+                              <input type="hidden" name="report_type" value="<%= params[:id] %>">
 
                                   <div class="form-group">
                                     <label for="exampleSelect1">Select District:</label>
@@ -34,7 +42,7 @@
                                       <option>ntchisi</option>
                                   </select>
                               </div>
-                              
+
                               <button <button type="submit" class="btn btn-success" style="border-radius: 0px">Next</button>
                           </form>
 
@@ -49,4 +57,3 @@
 
 
   </div>
-
