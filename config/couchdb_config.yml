@@ -1,16 +1,12 @@
-source_code : BBC
-source_name : Balaka BLM Clinic
-source_district : Balaka
-source_region : Southern Region 
 source_address: 127.0.0.1
-source_database : opd_database
-source_username : admin
-source_password : test
+source_database: opd_couchdb_dhis_development
+source_username : root
+source_password : sam
 source_port : 5984
 
-#not being used sofar
+#not being used  sofar
 dest_host : 192.168.18.243
 dest_port : 5984
-dest_username : admin
-dest_password : test
-dest_database : opd_database
+dest_username : root
+dest_password : sam
+dest_database : opd_couchdb_dhis_development

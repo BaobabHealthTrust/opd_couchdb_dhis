@@ -92,15 +92,15 @@
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav pull-right">
 
-            
-               
-               <li><%= link_to "Log out", {:controller => 'sessions', :action => 'logout'} %></li>
-             
-          
 
-             
-         
-              
+
+               <li><%= link_to "Log out", {:controller => 'sessions', :action => 'logout'} %></li>
+
+
+
+
+
+
 
             </ul>
           </div>
@@ -147,12 +147,12 @@
                         <table class="table">
                           <tr>
                             <td>
-                              <span class="glyphicon glyphicon-tasks"></span><a href="/report/district_form">Idsr Monthly Report</a>
+                              <span class="glyphicon glyphicon-tasks"></span><a href="/report/district_form/<%= id = 'idsr monthly' %>">Idsr Monthly Report</a>
                             </td>
                           </tr>
                           <tr>
                             <td>
-                              <span class="glyphicon glyphicon-tasks"></span><a href="/report/district_form">HMIS-15 Report</a>
+                              <span class="glyphicon glyphicon-tasks"></span><a href="/report/district_form/<%= id = "hmis-15" %>">HMIS-15 Report</a>
                             </td>
                           </tr>
                           <tr>
@@ -237,15 +237,15 @@
               <div id='controls' class='row'>
 
                 <div class='col-lg-12'>
-                 
-                  
+
+
                   <% if !flash[:logged_out].blank? %>
                     <div class="alert alert-warning" role="alert">
                   <span class="" aria-hidden="true"></span>
                   <span class="sr-only">Error:</span>
                   <%= flash[:logged_out] %>
                   </div>
-                  <% end %> 
+                  <% end %>
 
                     <% if !flash[:logged_in].blank? %>
                     <div class="alert alert-success" role="alert">
@@ -253,7 +253,7 @@
                   <span class="sr-only">Error:</span>
                   <%= flash[:logged_in] %>
                   </div>
-                  <% end %> 
+                  <% end %>
                    <% if !flash[:notice].blank? %>
                     <div class="alert alert-warning" role="alert">
                   <span class="" aria-hidden="true"></span>
@@ -261,12 +261,21 @@
                   <%= flash[:notice] %>
                   </div>
                   <% end %>
-                
+                  <% if !flash[:error].blank? %>
+                   <div class="alert alert-danger" role="alert">
+                 <span class="" aria-hidden="true"></span>
+                 <span class="sr-only">Error:</span>
+                 <%= flash[:error] %>
+                 </div>
+                 <% end %>
+
+
+
 
 
                 <%= yield %>
 
-              </div> 
+              </div>
 
 
 
@@ -297,7 +306,3 @@
     </body>
 
     </html>
-
-
-
-
