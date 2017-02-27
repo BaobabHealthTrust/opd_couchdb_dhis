@@ -4,8 +4,8 @@ development: &development
   port: 5984
   prefix: opd_couchdb_dhis
   suffix: development
-  username: root
-  password: sam
+  username: admin
+  password: test
 
 test:
   <<: *development
