@@ -1048,24 +1048,28 @@ class ReportController < ApplicationController
        @district=Report.fetch_district(params[:district],params[:report_type].downcase)
        @report_type = params[:report_type]
     if @district =="INVALID"
+
+
       flash[:notice] = "#{params[:district].titleize} District Does Not Have Any Current #{@report_type.upcase} Reports"
       render "district_form"
     end
-     @facilities=Report.facility_list(params[:district],params[:report_type].downcase)
+      @facilities=Report.facility_list(params[:district],params[:report_type].downcase)
 
   end
   def generate_facility_report
 
-    report_month = params[:facility_details]["year"] + params[:facility_details]["month"] + "01"
+    
 
+    report_month = params[:facility_details]["year"] + params[:facility_details]["month"] + "01"
+     
     @site_name = params[:facility_details]["site_name"]
     site_name = @site_name.to_s
 
-    @report_month = report_month
 
     @period = params[:facility_details]["year"] + params[:facility_details]["month"]
     #used when resetting status code
     report_month =  report_month.to_s
+
 
     @report_type = params[:report_type].to_s
     # show feedback if report not found
@@ -1108,6 +1112,8 @@ class ReportController < ApplicationController
 
     end
     if @report_conditions.blank?
+
+      
       flash[:notice] = "No current report matches your selected month or year!"
       render "district_form"
     end
@@ -1117,7 +1123,7 @@ class ReportController < ApplicationController
   def sending_to_dhis(id,report_type,filename)
     #sending to dhis2
     #sending_to_dhis2 = `curl -d @dhis2/#{filename}.xml "http://41.87.6.124/migration/api/dataValueSets" -H "Content-Type:application/xml" -u taonampando:Training1 -v`
-   sending_to_dhis2 = `curl -d @dhis2/#{filename}.xml "http://192.168.12.178:8080/api/dataValueSets" -H "Content-Type:application/xml" -u admin:Matthew2017 -v`
+   sending_to_dhis2 = `curl -d @dhis2/#{filename}.xml "http://192.168.18.229:8080/api/dataValueSets" -H "Content-Type:application/xml" -u admin:Matthew2017 -v`
     if !sending_to_dhis2.empty?
       result = {}
       res = Report.reset_status_code_to_zero(id)
