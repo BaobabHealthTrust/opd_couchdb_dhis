@@ -1,0 +1,86 @@
+
+<style type="text/css">
+		form{
+			margin: auto;
+			background: #ffffff;
+			color: #344351;
+		}
+		fieldset{
+			width: 96%;
+			margin:auto;
+		}
+		input, select ,option{
+	        color:#1a2732 !important;
+	    }
+	    label{
+	    	color: #344351;
+	    }
+	    /* topography */
+
+	    h1 {
+		  font-size: 3em;
+		  letter-spacing: -2px;
+		  margin-bottom: 30px;
+		  text-align: center;
+		}
+
+	    /* form */
+
+		input, textarea, select, .uneditable-input {
+		  border: 1px solid #bbb;
+		  width: 100%;
+		  margin-bottom: 15px;
+
+		}
+
+		input {
+		  height: auto !important;
+		}
+
+	    #myModal
+        {
+            position : absolute;
+              left: 20%;
+              top: 25%;
+              display: none;
+        }    
+
+</style>
+<h1>Create User </h1>
+
+<div class="row">
+ <div class="col-md-6 col-md-offset-3">
+  <%= form_for @user, :url => '/users/create' ,:method => :post do |f| %>
+    <%= f.label :Username %>
+    <%= f.text_field :username %>
+
+    <%= f.label :Name %>
+    <%= f.text_field :name %>
+
+    <%= f.label :Surname %>
+    <%= f.text_field :surname %>
+
+    <%= f.label :Email %>
+    <%= f.text_field :email %>
+
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+
+    <%= f.label :password_confirmation, "Confirm Password" %>
+    <%= f.password_field :password_confirmation %>
+
+    <%= f.submit "Save User", class: "bt btn-primary" %>
+    <% end %>
+    	
+
+    </div>
+
+
+
+
+
+
+
+
+
+
