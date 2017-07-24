@@ -19,9 +19,11 @@ end
 
    def new
     @user = User.new
+
   end
 
   def create
+    raise user_params.inspect
     @user = User.new(user_params)
     if @user.save
      # log_in @user
@@ -32,10 +34,17 @@ end
     end
   end
 
+  
+
+
+  def change_password
+
+  end
+
   private
 
     def user_params
-      params.require(:user).permit(:name, :username, :password)
+      params.require(:user).permit(:username,:name,:surname, :password,:password_confirmation)
     end
   
 end

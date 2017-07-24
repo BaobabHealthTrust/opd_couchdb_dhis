@@ -6,21 +6,19 @@ class User < CouchRest::Model::Base
 	attr_accessor :current_user
 	attr_accessor :password
 
-	validates :name,  presence: true
-
-
-
-
-
+	validates :name, presence: true
+    
 	before_save :encrypt_password
 	after_save :clear_password
 
 	property :name, String
 	property :username, String
+	property :surname, String
+	property :email, String
 	property :password, String
-	property  :salt, String
-
-
+	property :confirm_password, String
+	property :salt, String
+	property :role, String
 
 	timestamps!
 
