@@ -13,7 +13,23 @@ Rails.application.routes.draw do
   get 'users/index'
   get 'users/show'
 
-   resources :users
+  get "/confirm_username" => "users#confirm_username"
+  post "/confirm_username" => "users#confirm_username"
+
+
+  get "/users/edit_account" => "users#edit_account"
+  
+  get 'my_account' => "users#my_account"
+  post 'my_account' => "users#my_account"
+
+  post "/confirm_password" => "users#confirm_password"
+  get "/confirm_password" => "users#confirm_password"
+  get "/update_password" => "users#update_password"
+  post "/update_password" => "users#update_password"
+  post "/update_demographics" => "users#update_demographics"
+  get "/users/change_password" => "users#change_password" 
+
+  resources :users
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

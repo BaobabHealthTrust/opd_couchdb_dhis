@@ -13,7 +13,7 @@ class User < CouchRest::Model::Base
 
 	property :name, String
 	property :username, String
-	property :surname, String
+	property :last_name, String
 	property :email, String
 	property :password, String
 	property :confirm_password, String
