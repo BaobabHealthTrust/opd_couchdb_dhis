@@ -6,39 +6,26 @@ class ApplicationController < ActionController::Base
     #include SessionsHelper
     helper_method :current_user
 
-
     def current_user
       @current_user ||= User.find(session[:user_id]) if session[:user_id]
     end
-
-    
 
     def authorize
       redirect_to '/login' unless current_user
     end
 
-
-
-
-    private
+  private
 
     def confirm_logged_in
-
-    #raise x.inspect
-    unless session[:user_id]
-
+     unless session[:user_id]
       flash[:notice] = "Please Log in"
-
       redirect_to({:controller => 'sessions', :action=>'login'})
 
-       return false #halts the before action
+      return false 
 
-     else
-       return true
-     end
+      else
+         return true
+      end
    end
-
-
-   
  end
 

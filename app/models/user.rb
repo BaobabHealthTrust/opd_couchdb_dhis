@@ -22,6 +22,8 @@ class User < CouchRest::Model::Base
 
 	timestamps!
 
+	
+
 	design do
 		view :by_username
 		view :by_password
@@ -41,20 +43,20 @@ class User < CouchRest::Model::Base
 	def clear_password
 		self.password = nil
 	end
-
+    
 
 	def self.authenticate(username="", login_password="")
 
 		 user = User.by_username.key(username).last
+	     
 
 	     #setting default user
-
-	     if !user && (username=="admin")
+	    # if !user && (username=="admin")
 	     	#setting default user (admin)
-	     	default_password = "test"
-	     	default_user = User.new(:username=>"admin", :name=> "admin", :password=> default_password)
-	     	default_user.save
-	     end
+	    # 	default_password = "test"
+	    # 	default_user = User.new(:username=>"admin", :name=> "admin", :password=> default_password)
+	    # 	default_user.save
+	    # end
 
 
 	     if user && user.match_password(login_password)

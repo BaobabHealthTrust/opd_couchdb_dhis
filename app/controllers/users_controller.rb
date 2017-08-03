@@ -1,25 +1,27 @@
 class UsersController < ApplicationController
   
-    before_action :confirm_logged_in
+  before_action :confirm_logged_in
 
-   attr_accessor :password
+  attr_accessor :password
 
   def index
   	
   end
 
   def show
+    @user=User.all
+       
+  end
 
-     @user=User.all
-     # Find a list of all the people
+
+  def new
     
-end
-
-     
-
-   def new
     @user = User.new
 
+  end
+
+  def view
+     @user = User.find(params[:id])
   end
 
   def create
@@ -50,11 +52,10 @@ end
 
    @user= User.find(session[:user_id])
    
- 
   end
 
   def edit_account
-
+   
    @user= User.find(session[:user_id])
  
    @section = "Edit Account"
@@ -79,45 +80,33 @@ end
   end
 
   def change_password
-   
     @section = "Change Password"
 
     @targeturl = "/change_password"
-
     @user= User.find(session[:user_id])
   end
 
-   def confirm_password
-      user = User.current_user rescue User.find(params[:user_id])
-      password = params[:old_password]
-
-      if user.password_matches?(password)
-          render :text => {:response => true}.to_json
-      else
-        render :text => {:response => false}.to_json
-      end
-        
-  end
-
-def update_password
-     
-    user = User.current_user
-    user.plain_password = params[:user][:new_password]
-    user.password_attempt = 0
-    user.last_password_date = Time.now
-    user.save
-    
-    flash["notice"] = "Your new password has been changed succesfully" 
-    Audit.create(record_id: user.id, audit_type: "Audit", level: "User", reason: "Updated user password")
-    
-    redirect_to '/my_account'
-
-  end
-
-
-
-
   
+def update_password
+   
+   @user = User.current_user rescue User.find(params[:user_id])
+
+    user_password = params[:user][:new_password]
+   
+    old_password = params[:user][:password]
+        
+    if @user.match_password(old_password)
+       @user.password=user_password
+       @user.save
+       flash[:notice] = "Password changed successfully"
+       redirect_to '/my_account'
+    else
+       flash[:notice] = "Current password mismatch"
+       redirect_to '/users/change_password/'
+    
+    end  
+  
+  end
 
   private
 

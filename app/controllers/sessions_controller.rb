@@ -1,17 +1,10 @@
 require 'bcrypt'
 class SessionsController < ApplicationController
-
-
   before_action :confirm_logged_in, :except => [:login, :login_attempt, :logout]
-
-
   def new
   end
 
-
   def home
-
-
   end
 
   def login

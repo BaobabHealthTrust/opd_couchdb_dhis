@@ -552,14 +552,11 @@ class ReportController < ApplicationController
       elsif params[:hmis_report]
          
           hmis_report = params[:hmis_report]
-
           @hmis_report = {}
-
-         # coc_id = "yOGDVWUaf8p"
-         coc_id = "tzowc5pEjMQ"
+          coc_id = "tzowc5pEjMQ"
 
        
-          @hmis_report = {  
+      @hmis_report = {  
 
 
          "HMIS pregnant women starting antenatal care first trimester".upcase=>
@@ -1013,9 +1010,7 @@ class ReportController < ApplicationController
                 :dataElement=>"qfUTHllajeH",
                 :categoryOptionCombo=>coc_id}
 
-
-
-                                   
+                            
    }
 
       x = Date.today.strftime("%Y-%m-%d")
@@ -1027,16 +1022,12 @@ class ReportController < ApplicationController
       @hmis_report.each do |key, data|
       c += "<dataValue dataElement=\""+data[:dataElement].to_s + "\" categoryOptionCombo=\""+data[:categoryOptionCombo].to_s + "\" value=\""+data[:value].to_s + "\" />\n"
       end
-     
-      
+         
       c+="</dataValueSet>"
       `touch dhis2/#{filename}.xml`
       f = File.open("dhis2/#{filename}.xml", 'w')
       f.print c
       f.close()
-
-      #hmis_report hash goes here
-
         sending_to_dhis(params[:id],report_type,filename)
     end
 
@@ -1048,8 +1039,6 @@ class ReportController < ApplicationController
        @district=Report.fetch_district(params[:district],params[:report_type].downcase)
        @report_type = params[:report_type]
     if @district =="INVALID"
-
-
       flash[:notice] = "#{params[:district].titleize} District Does Not Have Any Current #{@report_type.upcase} Reports"
       render "district_form"
     end
@@ -1057,20 +1046,13 @@ class ReportController < ApplicationController
 
   end
   def generate_facility_report
-
-    
-
     report_month = params[:facility_details]["year"] + params[:facility_details]["month"] + "01"
      
     @site_name = params[:facility_details]["site_name"]
     site_name = @site_name.to_s
-
-
     @period = params[:facility_details]["year"] + params[:facility_details]["month"]
     #used when resetting status code
     report_month =  report_month.to_s
-
-
     @report_type = params[:report_type].to_s
     # show feedback if report not found
     key = @report_type.downcase.split(' ').join('_') + '_' + site_name.split(' ').join('_') + '_' + report_month
@@ -1112,8 +1094,6 @@ class ReportController < ApplicationController
 
     end
     if @report_conditions.blank?
-
-      
       flash[:notice] = "No current report matches your selected month or year!"
       render "district_form"
     end
