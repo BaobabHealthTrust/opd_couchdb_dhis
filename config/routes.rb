@@ -1,14 +1,11 @@
 Rails.application.routes.draw do
 
 
-
-
-  get 'report/idsr_report'
-
   root 'sessions#login'
 
   match ':controller(/:action(/:id))', :via => [:get, :post]
 
+  get 'report/idsr_report'
 
   get 'users/index'
   get 'users/show'

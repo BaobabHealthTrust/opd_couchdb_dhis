@@ -5,7 +5,7 @@ class User < CouchRest::Model::Base
 
 	attr_accessor :current_user
 	attr_accessor :password
-
+       
 	validates :name, presence: true
     
 	before_save :encrypt_password
@@ -47,25 +47,42 @@ class User < CouchRest::Model::Base
 
 	def self.authenticate(username="", login_password="")
 
-		 user = User.by_username.key(username).last
-	     
 
-	     #setting default user
-	    # if !user && (username=="admin")
+
+        user = User.by_username.key(username).last
+          
+           #setting default user
+	    if !user && (username=="admin")
 	     	#setting default user (admin)
-	    # 	default_password = "test"
-	    # 	default_user = User.new(:username=>"admin", :name=> "admin", :password=> default_password)
-	    # 	default_user.save
-	    # end
+	    	default_password = "test"
+	     	default_user = User.new(:username=>"admin", :name=> "admin", :password=> default_password)
+	        default_user.save
+	    end
 
+	    if user && user.match_password(login_password)
 
-	     if user && user.match_password(login_password)
+	       return user
 
-	     	return user
+	    else
+	      return false
+	    end
+		 #user = User.by_username.key(username).last
+	     
+	     #setting default user
+	    #if !user && (username=="admin")
+	     	#setting default user (admin)
+	    	#default_password = "test"
+	     	#default_user = User.new(:username=>"admin", :name=> "admin", :password=> default_password)
+	     #	default_user.save
+	     #end
 
-	     else
-	     	return false
-	     end
+	    #if user && user.match_password(login_password)
+
+	    #return user
+
+	    #else
+	    #	return false
+	  # end
 
 	 end
 

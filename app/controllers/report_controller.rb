@@ -1103,7 +1103,7 @@ class ReportController < ApplicationController
   def sending_to_dhis(id,report_type,filename)
     #sending to dhis2
     #sending_to_dhis2 = `curl -d @dhis2/#{filename}.xml "http://41.87.6.124/migration/api/dataValueSets" -H "Content-Type:application/xml" -u taonampando:Training1 -v`
-   sending_to_dhis2 = `curl -d @dhis2/#{filename}.xml "http://192.168.18.229:8080/api/dataValueSets" -H "Content-Type:application/xml" -u admin:Matthew2017 -v`
+   sending_to_dhis2 = `curl -d @dhis2/#{filename}.xml "http://192.168.18.239:8080/api/dataValueSets" -H "Content-Type:application/xml" -u admin:Matthew2017 -v`
     if !sending_to_dhis2.empty?
       result = {}
       res = Report.reset_status_code_to_zero(id)

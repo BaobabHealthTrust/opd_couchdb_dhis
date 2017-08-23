@@ -50,13 +50,17 @@ class UsersController < ApplicationController
 
   def my_account
 
-   @user= User.find(session[:user_id])
+     user_id = session[:user_id]
+     
+     
+    @user = User.find(session[:user_id])
+     
    
   end
 
   def edit_account
    
-   @user= User.find(session[:user_id])
+   @user = User.find(params[:id])
  
    @section = "Edit Account"
 
@@ -72,9 +76,9 @@ class UsersController < ApplicationController
       @user.email = params[:user][:email]
       @user.save
         
-      redirect_to "/my_account"
+      redirect_to "/users/show"
     else
-      redirect_to "/my_account"
+      redirect_to "/users/show"
     end
      
   end
@@ -83,7 +87,7 @@ class UsersController < ApplicationController
     @section = "Change Password"
 
     @targeturl = "/change_password"
-    @user= User.find(session[:user_id])
+    @user = User.find(params[:id])
   end
 
   

@@ -16,7 +16,6 @@ class SessionsController < ApplicationController
 
     if params[:username].present? && params[:login_password].present?
          authorized_user = User.authenticate(params[:username],params[:login_password])
-
     end
 
     if authorized_user
